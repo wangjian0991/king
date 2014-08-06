@@ -1,0 +1,89 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : mycon
+Source Server Version : 50022
+Source Host           : localhost:3306
+Source Database       : myblog
+
+Target Server Type    : MYSQL
+Target Server Version : 50022
+File Encoding         : 65001
+
+Date: 2014-07-13 23:26:39
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `article`
+-- ----------------------------
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE `article` (
+`id`  int(11) NOT NULL AUTO_INCREMENT ,
+`createtime`  varchar(20) CHARACTER SET gbk COLLATE gbk_chinese_ci NOT NULL ,
+`title`  varchar(50) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+`intro`  varchar(200) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+`content`  mediumtext CHARACTER SET gbk COLLATE gbk_chinese_ci NULL ,
+`author`  varchar(20) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+`source`  varchar(20) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+`updatetime`  varchar(20) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+`type`  tinyint(4) NULL DEFAULT 0 ,
+`typetext`  varchar(20) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+`status`  tinyint(4) NULL DEFAULT 0 ,
+`memo`  varchar(50) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+PRIMARY KEY (`id`, `createtime`),
+INDEX `select-1` USING BTREE (`title`, `source`, `type`, `status`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=gbk COLLATE=gbk_chinese_ci
+/*!50003 AUTO_INCREMENT=6924 */
+
+;
+
+-- ----------------------------
+-- Table structure for `option`
+-- ----------------------------
+DROP TABLE IF EXISTS `option`;
+CREATE TABLE `option` (
+`name`  varchar(50) CHARACTER SET gbk COLLATE gbk_chinese_ci NOT NULL ,
+`value`  varchar(100) CHARACTER SET gbk COLLATE gbk_chinese_ci NOT NULL ,
+`type`  tinyint(4) NOT NULL DEFAULT 0 COMMENT '类型' ,
+`status`  tinyint(4) NOT NULL COMMENT '状态' ,
+`memo`  varchar(50) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+PRIMARY KEY (`name`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=gbk COLLATE=gbk_chinese_ci
+
+;
+
+-- ----------------------------
+-- Table structure for `userinfo`
+-- ----------------------------
+DROP TABLE IF EXISTS `userinfo`;
+CREATE TABLE `userinfo` (
+`id`  int(11) NOT NULL AUTO_INCREMENT ,
+`username`  varchar(20) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+`password`  varchar(20) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+`type`  tinyint(4) NULL DEFAULT 0 ,
+`status`  tinyint(4) NULL DEFAULT 0 ,
+`memo`  varchar(50) CHARACTER SET gbk COLLATE gbk_chinese_ci NULL DEFAULT NULL ,
+PRIMARY KEY (`id`),
+INDEX `sss` USING BTREE (`username`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=gbk COLLATE=gbk_chinese_ci
+/*!50003 AUTO_INCREMENT=9 */
+
+;
+
+-- ----------------------------
+-- Auto increment value for `article`
+-- ----------------------------
+ALTER TABLE `article` AUTO_INCREMENT=6924;
+
+-- ----------------------------
+-- Auto increment value for `userinfo`
+-- ----------------------------
+ALTER TABLE `userinfo` AUTO_INCREMENT=9;
